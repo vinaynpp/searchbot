@@ -2,11 +2,25 @@ from pynput import keyboard
 import time
 import clipboard
 import webbrowser
+import pip
+
+
+def install(package):
+    if hasattr(pip, 'main'):
+        pip.main(['install', package])
+    else:
+        pip._internal.main(['install', package])
+
+
+# Example
+if __name__ == '__main__':
+    install('pynput')
+    install('clipboard')
+    install('webbrowser')
 
 with open('sites.txt', 'r') as file:
     sites = file.read().replace('\n', ' OR site:')
-    sites = " site:"+sites
-
+    sites = " site:" + sites
 
 print("WHICH SEARCH ENGINE DO YOU USE?")
 print("ENTER '0' FOR DUCK DUCK GO ")
